@@ -2,7 +2,8 @@
 export interface Task {
     id: number;
     title: string;
-    desc: string;
-    storyPoints: number;
-    status: string; // should be an ENUM
+    asignee: string;
+    sp: number;
+    priority: string;
+    status: "todo" | "in-progress" | "done"; // should be an ENUM
 }

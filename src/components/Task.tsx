@@ -7,8 +7,10 @@ import Typography from "@mui/material/Typography";
 import { Avatar } from "@mui/material";
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import { Task as TaskType } from "../model/task";
 
-export const Task: React.FC = () => {
+export const Task = ({ taskItem }: { taskItem: TaskType }) => {
+
   return (
     <Card variant="outlined" className="task">
       <CardContent>
@@ -20,16 +22,16 @@ export const Task: React.FC = () => {
           }}
         >
           <Typography variant="h6" component="div">
-            Title
+            {taskItem.title}
           </Typography>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+          <Avatar alt={taskItem.asignee} src="/static/images/avatar/1.jpg" />
         </Box>
 
-        <Typography variant="body2">
+        {/* <Typography variant="body2">
           well meaning and kindly.
           <br />
           {'"a benevolent smile"'}
-        </Typography>
+        </Typography> */}
       </CardContent>
       <CardActions
         sx={{
@@ -41,7 +43,10 @@ export const Task: React.FC = () => {
           pt: 0.25,
         }}
       >
-        <Box>SP: 3</Box>
+        <Box sx={{ display: "flex", gap: 1 }}>
+          <Box>SP: {taskItem.sp}</Box> |
+          <Box>Priority: {taskItem.priority}</Box>
+        </Box>
         <Box sx={{ display: "flex", gap: 1 }}>
           <IconButton size="small">
             <BorderColorOutlinedIcon color="primary" />

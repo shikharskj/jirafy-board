@@ -1,7 +1,6 @@
 {
   "tasks": [
     {
-      "userId": 1,
       "id": 1,
       "title": "Implement feedback collector",
       "asignee": "Vaibhav",
@@ -10,7 +9,6 @@
       "status": "todo"
     },
     {
-      "userId": 1,
       "id": 2,
       "title": "Bump version for new api for billing",
       "asignee": "Shikhar",
@@ -19,7 +17,6 @@
       "status": "in-progress"
     },
     {
-      "userId": 1,
       "id": 3,
       "title": "Add NPS feedback to wallboard",
       "asignee": "Shikhar",
@@ -28,7 +25,6 @@
       "status": "todo"
     },
     {
-      "userId": 1,
       "id": 4,
       "title": "Update t&c copy with v1.9",
       "asignee": "Priya",
@@ -37,7 +33,6 @@
       "status": "todo"
     },
     {
-      "userId": 1,
       "id": 5,
       "title": "Refactor stripe verification",
       "asignee": "Rohit",
@@ -46,7 +41,6 @@
       "status": "in-progress"
     },
     {
-      "userId": 1,
       "id": 6,
       "title": "Investigate performance dips in setting tab",
       "asignee": "Rohit",
@@ -55,7 +49,6 @@
       "status": "todo"
     },
     {
-      "userId": 1,
       "id": 7,
       "title": "Multi-dest search UI web",
       "asignee": "Vaibhav",
@@ -64,7 +57,6 @@
       "status": "done"
     },
     {
-      "userId": 1,
       "id": 8,
       "title": "Quick booking for accomodations",
       "asignee": "Priya",
@@ -73,7 +65,6 @@
       "status": "in-progress"
     },
     {
-      "userId": 1,
       "id": 9,
       "title": "Shopping cart purchasing error",
       "asignee": "Shikhar",
