@@ -2,6 +2,7 @@ import useTaskStore from "../store/store";
 import { shallow } from "zustand/shallow";
 import { Task as TaskComponent } from "./Task";
 import { Task as TaskType } from "../model/task";
+import { Box } from "@mui/material";
 
 export const Column = ({ status }: any) => {
 
@@ -12,9 +13,9 @@ export const Column = ({ status }: any) => {
 
   return (
     <div className="column">
-      <div>
+      <Box sx={{ ml: 1}}>
         {status} - {tasks?.length}
-      </div>
+      </Box>
 
       {tasks?.map((taskItem: TaskType) => {
         return <TaskComponent taskItem={taskItem} />;

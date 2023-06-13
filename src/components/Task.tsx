@@ -8,8 +8,25 @@ import { Avatar } from "@mui/material";
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import { Task as TaskType } from "../model/task";
+import useTaskStore from "../store/store";
+import ConfirmDeleteModal from "./ConfirmDeleteModal";
+import { useState } from "react";
 
 export const Task = ({ taskItem }: { taskItem: TaskType }) => {
+  const { setIsEdit } = useTaskStore();
+  const [open, setOpen] = useState<boolean>(false);
+
+
+  const editClickHandler = (task: TaskType) => {
+    setIsEdit(true, task);
+  }
+
+  const deleteClickHandler = () => {
+    setOpen(true);
+  }
+  const handleClose = () => {
+    setOpen(false);
+  }
 
   return (
     <Card variant="outlined" className="task">
@@ -26,12 +43,6 @@ export const Task = ({ taskItem }: { taskItem: TaskType }) => {
           </Typography>
           <Avatar alt={taskItem.asignee} src="/static/images/avatar/1.jpg" />
         </Box>
-
-        {/* <Typography variant="body2">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography> */}
       </CardContent>
       <CardActions
         sx={{
@@ -48,14 +59,18 @@ export const Task = ({ taskItem }: { taskItem: TaskType }) => {
           <Box>Priority: {taskItem.priority}</Box>
         </Box>
         <Box sx={{ display: "flex", gap: 1 }}>
-          <IconButton size="small">
+
+          <IconButton size="small" onClick={() => editClickHandler(taskItem)}>
             <BorderColorOutlinedIcon color="primary" />
           </IconButton>
-          <IconButton size="small">
+
+          <IconButton size="small" onClick={deleteClickHandler}>
             <DeleteOutlinedIcon color="primary" />
           </IconButton>
+          
         </Box>
       </CardActions>
+      <ConfirmDeleteModal open={open} onClose={handleClose}  data={taskItem}/>
     </Card>
   );
 };
