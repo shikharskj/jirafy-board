@@ -16,20 +16,28 @@ export const Task = ({ taskItem }: { taskItem: TaskType }) => {
   const { setIsEdit } = useTaskStore();
   const [open, setOpen] = useState<boolean>(false);
 
-
   const editClickHandler = (task: TaskType) => {
     setIsEdit(true, task);
-  }
+  };
 
-  const deleteClickHandler = () => {
+  const deleteClickHandler = (): void => {
     setOpen(true);
-  }
-  const handleClose = () => {
+  };
+  const handleClose = (): void => {
     setOpen(false);
+  };
+
+  const dragStarted = (e: React.DragEvent<HTMLDivElement>, item: TaskType): void => {
+    e.dataTransfer.setData("draggedTask", JSON.stringify(item));
   }
 
   return (
-    <Card variant="outlined" className="task">
+    <Card
+      variant="outlined"
+      draggable
+      onDragStart={(e) => dragStarted(e, taskItem)}
+      className="task"
+    >
       <CardContent>
         <Box
           sx={{
@@ -55,11 +63,9 @@ export const Task = ({ taskItem }: { taskItem: TaskType }) => {
         }}
       >
         <Box sx={{ display: "flex", gap: 1 }}>
-          <Box>SP: {taskItem.sp}</Box> |
-          <Box>Priority: {taskItem.priority}</Box>
+          <Box>SP: {taskItem.sp}</Box> |<Box>Priority: {taskItem.priority}</Box>
         </Box>
         <Box sx={{ display: "flex", gap: 1 }}>
-
           <IconButton size="small" onClick={() => editClickHandler(taskItem)}>
             <BorderColorOutlinedIcon color="primary" />
           </IconButton>
@@ -67,10 +73,9 @@ export const Task = ({ taskItem }: { taskItem: TaskType }) => {
           <IconButton size="small" onClick={deleteClickHandler}>
             <DeleteOutlinedIcon color="primary" />
           </IconButton>
-          
         </Box>
       </CardActions>
-      <ConfirmDeleteModal open={open} onClose={handleClose}  data={taskItem}/>
+      <ConfirmDeleteModal open={open} onClose={handleClose} data={taskItem} />
     </Card>
   );
 };

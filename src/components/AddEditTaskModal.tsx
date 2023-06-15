@@ -23,7 +23,7 @@ type IModalProps = {
 };
 
 const defaultState: Task = {
-  id: new Date().getTime(),
+  id: (new Date()).getTime()*Math.random(),
   title: "",
   asignee: "",
   priority: "p0",
@@ -140,7 +140,7 @@ export const AddEditTaskModal = ({ open, onClose, data }: IModalProps) => {
       <DialogActions>
         <Button
           onClick={() => {
-            setTask({ ...defaultState });
+            setTask({ ...defaultState, id: (new Date()).getTime()*Math.random() });
             onClose();
           }}
         >
@@ -149,10 +149,8 @@ export const AddEditTaskModal = ({ open, onClose, data }: IModalProps) => {
         {data ? (
           <Button
             onClick={() => {
-              // console.log("tasks to create = ", task);
               console.log("tasks to update = ", task);
               updateTask({...task})
-              // // setTask({ ...defaultState });
               onClose();
             }}
           >
@@ -163,7 +161,6 @@ export const AddEditTaskModal = ({ open, onClose, data }: IModalProps) => {
             onClick={() => {
               console.log("tasks to create = ", task);
               createTask({ ...task });
-              // setTask({ ...defaultState });
               onClose();
             }}
           >

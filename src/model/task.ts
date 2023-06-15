@@ -7,3 +7,8 @@ export interface Task {
     priority: string;
     status: "todo" | "in-progress" | "done"; // should be an ENUM
 }
+
+export interface IFilterState {
+    status: string;
+    asignee: string;
+  };
